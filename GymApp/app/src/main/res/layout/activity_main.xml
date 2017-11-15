@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sujeeth.gymapp.MainActivity">
+
+    <Button
+        android:id="@+id/currentWorkOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lastWorkOut"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="44dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginVertical="50dp"
+        android:onClick="onClick"
+        android:text="Next"
+        tools:layout_editor_absoluteX="69dp"
+        tools:layout_editor_absoluteY="97dp" />
+
+    <Button
+        android:id="@+id/lastWorkOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:text="Last"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="199dp" />
+
+    <Button
+        android:id="@+id/workoutLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="Log"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="358dp" />
+</RelativeLayout>

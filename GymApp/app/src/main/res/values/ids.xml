@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="currentWorkOut" type="id">next</item>
+    <item name="lastWorkOut" type="id">last</item>
+    <item name="workoutLog" type="id">log</item>
+    <item name="editText" type="id">editText</item>
+</resources>
