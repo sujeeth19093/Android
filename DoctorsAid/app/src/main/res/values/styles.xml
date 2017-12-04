@@ -1,0 +1,23 @@
+<resources xmlns:android="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="textBox">
+        <solid android:color="#FFFFFF"/>
+
+        <stroke
+            android:width="2dp"
+            android:color="#E7E7E7"
+            android:height="10dp"/>
+
+        <corners
+            android:radius="5dp"/>
+    </style>
+
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sujeeth.docaid.page1Activity">
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="80dp"
+        android:onClick="login"
+        />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:layout_toRightOf="@+id/loginButton"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="300dp"/>
+
+    <EditText
+        android:id="@+id/usernameTBox"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        style="@style/textBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        />
+
+    <EditText
+        android:id="@+id/passwordTBox"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:inputType="textPassword"
+        />
+
+</RelativeLayout>
