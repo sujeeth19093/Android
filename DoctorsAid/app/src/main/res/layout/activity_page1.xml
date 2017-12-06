@@ -13,7 +13,6 @@
         android:text="Login"
         android:layout_marginTop="300dp"
         android:layout_marginLeft="80dp"
-        android:onClick="login"
         />
 
     <Button
@@ -21,15 +20,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reset"
-        android:layout_toRightOf="@+id/loginButton"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="220dp"
         android:layout_marginTop="300dp"/>
 
     <EditText
         android:id="@+id/usernameTBox"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        style="@style/textBox"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
         />

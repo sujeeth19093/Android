@@ -7,17 +7,4 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
-    <style name="textBox">
-        <solid android:color="#FFFFFF"/>
-
-        <stroke
-            android:width="2dp"
-            android:color="#E7E7E7"
-            android:height="10dp"/>
-
-        <corners
-            android:radius="5dp"/>
-    </style>
-
 </resources>
