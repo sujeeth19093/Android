@@ -16,11 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".loginSuccess"
-                  android:parentActivityName=".page1Activity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".page1Activity" />
+        <activity
+            android:name=".loginSuccess"
+            android:parentActivityName=".page1Activity">
+        </activity>
+        <activity android:name=".patientInfo"
+                  android:parentActivityName=".loginSuccess">
+        </activity>
+        <activity android:name=".addPatientInfo"
+                  android:parentActivityName=".loginSuccess">
         </activity>
     </application>
 
