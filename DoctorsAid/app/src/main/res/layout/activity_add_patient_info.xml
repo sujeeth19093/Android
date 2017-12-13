@@ -10,37 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
+            android:id="@+id/scrollLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <EditText
-                android:id="@+id/patientIDTxtBox2"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="25dp"
-                />
-
-            <Button
-                android:id="@+id/goButton2"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="250dp"
-                android:layout_marginTop="20dp"
-                android:text = "Go ->"
-                />
 
             <EditText
                 android:id="@+id/enterNameTxtBox"
                 android:layout_width="325dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="20dp"
                 />
 
             <EditText
                 android:id="@+id/enterAgeTxtBox"
-                android:layout_width="325dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_below="@+id/enterNameTxtBox"
@@ -77,42 +61,53 @@
 
             <EditText
                 android:id="@+id/upperBPTxtBox"
-                android:layout_width="100dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_below="@+id/heightTxtBox"
                 android:layout_marginTop="25dp"
                 />
 
-            <EditText
-                android:id="@+id/Const_BPdividerTxtBox"
+            <TextView
+                android:id="@+id/Const_BPdividerTxtV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/upperBPTxtBox"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="15dp"
                 android:layout_below="@+id/heightTxtBox"
                 android:layout_marginTop="25dp"
                 android:text="/"
+                android:textSize="30dp"
                 />
 
             <EditText
                 android:id="@+id/lowerBPTxtBox"
-                android:layout_width="100dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/Const_BPdividerTxtBox"
-                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/Const_BPdividerTxtV"
+                android:layout_marginLeft="15dp"
                 android:layout_below="@+id/heightTxtBox"
                 android:layout_marginTop="25dp"
                 />
 
-            <EditText
-                android:id="@+id/Const_diabeticTxtBox"
+            <TextView
+                android:id="@+id/DiabeticTxtV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_below="@+id/upperBPTxtBox"
                 android:layout_marginTop="25dp"
-                android:text="Diabetic"
+                android:text="Diabetic:"
+                android:textSize="20dp"
+                />
+
+            <CheckBox
+                android:id="@+id/diabeticChkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/upperBPTxtBox"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@id/DiabeticTxtV"
                 />
 
             <TextView
@@ -120,19 +115,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text = "History:"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@+id/Const_diabeticTxtBox"
+                android:layout_below="@+id/DiabeticTxtV"
                 android:layout_marginTop="25dp"
                 />
 
             <EditText
                 android:id="@+id/patientHistoryTxtBox"
-                android:layout_width="100dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/Const_diabeticTxtBox"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/DiabeticTxtV"
                 android:layout_toRightOf="@id/historyTxtV"
+                />
+
+            <Button
+                android:id="@+id/clearButton"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text = "Clear"
+                android:layout_marginLeft="190dp"
+                android:layout_below="@id/patientHistoryTxtBox"
+                android:layout_marginTop="10dp"
+                />
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text = "Save"
+                android:layout_below="@id/patientHistoryTxtBox"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/clearButton"
+                android:layout_marginLeft="20dp"
                 />
 
         </RelativeLayout>
