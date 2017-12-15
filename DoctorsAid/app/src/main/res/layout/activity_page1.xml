@@ -29,6 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
+        android:hint = "Username"
+        android:textAlignment="center"
         />
 
     <EditText
@@ -38,6 +40,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
         android:inputType="textPassword"
+        android:hint = "Password"
+        android:textAlignment="center"
         />
 
 </RelativeLayout>

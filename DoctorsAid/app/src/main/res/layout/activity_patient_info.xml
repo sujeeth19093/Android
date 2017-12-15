@@ -6,4 +6,161 @@
     android:layout_height="match_parent"
     tools:context="com.example.sujeeth.docaid.patientInfo">
 
+    <EditText
+        android:id="@+id/patientIDTxtBox2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        />
+
+    <Button
+        android:id="@+id/goButton2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="20dp"
+        android:text = "Go ->"
+        />
+
+    <TextView
+        android:id = "@+id/IDTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/goButton2"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="18dp"
+        android:text = "ID:"
+        />
+
+    <TextView
+        android:id = "@+id/patientIDTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/goButton2"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/IDTxtV"
+        android:layout_marginLeft="10dp"
+        android:textSize="18dp"
+        android:text = ""
+        />
+
+    <TextView
+        android:id = "@+id/NameTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/IDTxtV"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="18dp"
+        android:text = "Name:"
+        />
+
+    <TextView
+        android:id = "@+id/patientNameTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/IDTxtV"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/NameTxtV"
+        android:layout_marginLeft="10dp"
+        android:textSize="18dp"
+        android:text = ""
+        />
+
+    <TextView
+        android:id = "@+id/AgeTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/NameTxtV"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="18dp"
+        android:text = "Age:"
+        />
+
+    <TextView
+        android:id = "@+id/patientAgeTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/NameTxtV"
+        android:layout_toRightOf="@id/AgeTxtV"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:text = ""
+        />
+
+    <TextView
+        android:id = "@+id/patientGenderTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/NameTxtV"
+        android:layout_toRightOf="@id/AgeTxtV"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:text = "Gender:"
+        />
+
+    <ScrollView
+        android:id = "@+id/patientInfoScrollLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop = "10dp"
+        android:layout_below="@id/patientGenderTxtV">
+
+      <TableLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginTop = "10dp"
+          android:layout_below="@id/patientGenderTxtV"
+          android:stretchColumns="*">
+
+          <TableRow
+              android:id = "@+id/titleRow"
+              android:layout_height="wrap_content">
+              <TextView
+                  android:textColor="@color/black"
+                  android:text="Medicine Name"
+                  android:textAlignment="center"
+                  android:background="@drawable/border_shape"
+                  />
+
+              <TextView
+                  android:textColor="@color/black"
+                  android:text = "Dosage"
+                  android:textAlignment="center"
+                  android:background="@drawable/border_shape"
+                  />
+
+              <TextView
+                  android:textColor="@color/black"
+                  android:text="Application"
+                  android:textAlignment="center"
+                  android:background="@drawable/border_shape"
+                  />
+
+              <TextView
+                  android:textColor="@color/black"
+                  android:text="Quantity"
+                  android:textAlignment="center"
+                  android:background="@drawable/border_shape"
+                  />
+
+              <TextView
+                  android:textColor="@color/black"
+                  android:text="Add/Delete"
+                  android:textAlignment="center"
+                  android:background="@drawable/border_shape"
+                  />
+
+          </TableRow>
+
+
+
+      </TableLayout>
+    </ScrollView>
+
 </RelativeLayout>

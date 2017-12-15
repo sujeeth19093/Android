@@ -26,15 +26,21 @@ public class loginSuccess extends AppCompatActivity implements View.OnClickListe
         addNew.setOnClickListener(this);
 
         patientID = (EditText)findViewById(R.id.patientIDTxtBox);
-        patientID.setInputType(InputType.TYPE_NUMBER_VARIATION_NORMAL);
+        patientID.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
     }
 
     public void onClick(View v){
         switch(v.getId())
         {
             case R.id.goButton:
-                Intent goIntent = new Intent(this, patientInfo.class);
-                startActivity(goIntent);
+                if(patientID.getText().toString().equals("010277891"))
+                {
+                    Intent goIntent = new Intent(this, patientInfo.class);
+                    startActivity(goIntent);
+                }else
+                {
+
+                }
                 break;
             case R.id.addNewButton:
                 Intent addNewIntent = new Intent(this, addPatientInfo.class);

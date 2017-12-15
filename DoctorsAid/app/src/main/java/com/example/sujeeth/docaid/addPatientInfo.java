@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class addPatientInfo extends AppCompatActivity implements OnClickListener{
 
@@ -47,10 +48,14 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
 
     public void onClick(View v)
     {
+        Toast myToast;
         switch(v.getId())
         {
             case R.id.saveButton:
-
+                myToast = Toast.makeText(getApplicationContext(),"Saved",Toast.LENGTH_SHORT);
+                myToast.show();
+                Intent saveSuccessIntent = new Intent(this, loginSuccess.class);
+                startActivity(saveSuccessIntent);
                 break;
             case R.id.clearButton:
                 clearFunc((ViewGroup) findViewById(R.id.scrollLayout));
