@@ -9,10 +9,14 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class loginSuccess extends AppCompatActivity implements View.OnClickListener{
 
     Button Go,addNew;
     EditText patientID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
