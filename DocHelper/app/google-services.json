@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "752228636292",
+    "firebase_url": "https://dochelper-50155.firebaseio.com",
+    "project_id": "dochelper-50155",
+    "storage_bucket": "dochelper-50155.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752228636292:android:aef8f97caea2c653",
+        "android_client_info": {
+          "package_name": "com.example.sujeeth.dochelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "752228636292-e4m942kpeo6m15atsmn9jfp1mr6lpmuq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sujeeth.dochelper",
+            "certificate_hash": "ad2dabdef0f8dc61ccbbde4cb0a0ba60d87f0bcd"
+          }
+        },
+        {
+          "client_id": "752228636292-gkpgruuactc2enjrke96qct1pelqiru2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA391i4WrozlW0R7OTp2oPyZeajdzcniWw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "752228636292-gkpgruuactc2enjrke96qct1pelqiru2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
