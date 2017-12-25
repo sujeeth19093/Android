@@ -6,141 +6,159 @@
     android:layout_height="match_parent"
     tools:context="com.example.sujeeth.firebasetest.MainActivity">
 
-    <RelativeLayout
-        android:id = "@+id/signInLayout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/scrollLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/signInButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign In"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="300dp"
-            android:layout_marginLeft="80dp"
-            />
+            <EditText
+                android:id="@+id/enterNameTxtBox"
+                android:layout_width="325dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:hint = "Full Name"
+                />
 
-        <Button
-            android:id="@+id/signUpButton"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:layout_below="@id/signInButton"
-            />
+            <EditText
+                android:id="@+id/enterAgeTxtBox"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@+id/enterNameTxtBox"
+                android:layout_marginTop="25dp"
+                android:hint = "Age"
+                />
 
-        <EditText
-            android:id="@+id/usernameTBox"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="120dp"
-            android:hint = "Username"
-            android:textAlignment="center"
-            />
+            <EditText
+                android:id="@+id/genderTxtBox"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@+id/enterAgeTxtBox"
+                android:layout_marginTop="25dp"
+                android:hint = "Gender"
+                />
 
-        <EditText
-            android:id="@+id/passwordTBox"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="200dp"
-            android:inputType="textPassword"
-            android:hint = "Password"
-            android:textAlignment="center"
-            />
+            <EditText
+                android:id="@+id/heightTxtBox"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@+id/genderTxtBox"
+                android:layout_marginTop="25dp"
+                android:hint = "Height"
+                />
 
-    </RelativeLayout>
+            <EditText
+                android:id="@+id/weightTxtBox"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/heightTxtBox"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@+id/genderTxtBox"
+                android:layout_marginTop="25dp"
+                android:hint = "Weight"
+                />
 
-    <RelativeLayout
-        android:id="@+id/alreadySignedInLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" >
+            <EditText
+                android:id="@+id/upperBPTxtBox"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@+id/heightTxtBox"
+                android:layout_marginTop="25dp"
+                />
 
-        <TextView
-            android:id="@+id/welcomeTxtV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_above="@id/continueButton"
-            android:layout_marginBottom="50dp"
-            android:text = "Welcome Sujeeth"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            />
+            <TextView
+                android:id="@+id/Const_BPdividerTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/upperBPTxtBox"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/heightTxtBox"
+                android:layout_marginTop="25dp"
+                android:text="/"
+                android:textSize="30dp"
+                />
 
-        <Button
-            android:id="@+id/continueButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text = "Continue"
-            android:layout_centerInParent="true"
-            />
+            <EditText
+                android:id="@+id/lowerBPTxtBox"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/Const_BPdividerTxtV"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/heightTxtBox"
+                android:layout_marginTop="25dp"
+                />
 
-        <Button
-            android:id="@+id/signOutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/continueButton"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:text = "Sign Out"
-            />
+            <TextView
+                android:id="@+id/DiabeticTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@+id/upperBPTxtBox"
+                android:layout_marginTop="25dp"
+                android:text="Diabetic:"
+                android:textSize="20dp"
+                />
 
-    </RelativeLayout>
+            <CheckBox
+                android:id="@+id/diabeticChkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/upperBPTxtBox"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@id/DiabeticTxtV"
+                />
 
-    <RelativeLayout
-        android:id="@+id/signUpLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        >
+            <TextView
+                android:id="@+id/historyTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "History:"
+                android:textSize="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@+id/DiabeticTxtV"
+                android:layout_marginTop="25dp"
+                />
 
-        <EditText
-            android:id = "@+id/emailTBox"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:hint="Email ID"
-            android:textAlignment="center"
-            />
+            <EditText
+                android:id="@+id/patientHistoryTxtBox"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/DiabeticTxtV"
+                android:layout_toRightOf="@id/historyTxtV"
+                />
 
-        <EditText
-            android:id = "@+id/emailPWordTBox"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/emailTBox"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:hint = "Password"
-            android:inputType="textPassword"
-            android:textAlignment="center"
-            />
+            <Button
+                android:id="@+id/clearButton"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text = "Clear"
+                android:layout_below="@id/patientHistoryTxtBox"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/saveButton"
+                android:layout_marginLeft="20dp"
+                />
 
-        <Button
-            android:id = "@+id/authenticateButton"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/emailPWordTBox"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:text = "Authenticate"
-            />
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text = "Save"
+                android:layout_below="@id/patientHistoryTxtBox"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="190dp"
+                />
 
-        <TextView
-            android:id = "@+id/authenticationStatusTxtV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/authenticateButton"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:text=""
-            />
+        </RelativeLayout>
 
-    </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

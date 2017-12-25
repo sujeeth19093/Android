@@ -20,6 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="20dp"
+                android:hint = "Full Name"
                 />
 
             <EditText
@@ -29,6 +30,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_below="@+id/enterNameTxtBox"
                 android:layout_marginTop="25dp"
+                android:hint = "Age"
                 />
 
             <EditText
@@ -38,6 +40,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_below="@+id/enterAgeTxtBox"
                 android:layout_marginTop="25dp"
+                android:hint = "Gender"
                 />
 
             <EditText
@@ -47,6 +50,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_below="@+id/genderTxtBox"
                 android:layout_marginTop="25dp"
+                android:hint = "Height"
                 />
 
             <EditText
@@ -57,13 +61,25 @@
                 android:layout_marginLeft="25dp"
                 android:layout_below="@+id/genderTxtBox"
                 android:layout_marginTop="25dp"
+                android:hint = "Weight"
+                />
+
+            <TextView
+                android:id="@+id/BPTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@+id/heightTxtBox"
+                android:layout_marginTop="35dp"
+                android:text="Blood Pressure:"
+                android:textSize="20dp"
                 />
 
             <EditText
                 android:id="@+id/upperBPTxtBox"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@+id/BPTxtV"
                 android:layout_below="@+id/heightTxtBox"
                 android:layout_marginTop="25dp"
                 />
@@ -73,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/upperBPTxtBox"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="5dp"
                 android:layout_below="@+id/heightTxtBox"
                 android:layout_marginTop="25dp"
                 android:text="/"
@@ -85,7 +101,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/Const_BPdividerTxtV"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="5dp"
                 android:layout_below="@+id/heightTxtBox"
                 android:layout_marginTop="25dp"
                 />
@@ -125,19 +141,20 @@
                 android:id="@+id/patientHistoryTxtBox"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_below="@+id/DiabeticTxtV"
                 android:layout_toRightOf="@id/historyTxtV"
                 />
 
             <Button
-                android:id="@+id/clearButton"
-                android:layout_width="70dp"
+                android:id="@+id/cancelButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text = "Clear"
-                android:layout_marginLeft="190dp"
+                android:text = "Cancel"
+                android:layout_marginLeft="20dp"
                 android:layout_below="@id/patientHistoryTxtBox"
+                android:layout_toRightOf="@id/saveButton"
                 android:layout_marginTop="10dp"
                 />
 
@@ -148,8 +165,7 @@
                 android:text = "Save"
                 android:layout_below="@id/patientHistoryTxtBox"
                 android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/clearButton"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="170dp"
                 />
 
         </RelativeLayout>
