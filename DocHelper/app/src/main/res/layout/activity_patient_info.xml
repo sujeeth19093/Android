@@ -6,21 +6,97 @@
     android:layout_height="match_parent"
     tools:context="com.example.sujeeth.dochelper.patientInfo">
 
-    <EditText
-        android:id="@+id/patientIDTxtBox2"
-        android:layout_width="200dp"
+    <RelativeLayout
+        android:id = "@+id/otherPatientLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="25dp"
-        />
+        android:visibility="gone">
 
-    <Button
-        android:id="@+id/goButton2"
-        android:layout_width="100dp"
+        <Button
+            android:id="@+id/lookUpOtherPatientButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text = "Look Up Other Patient"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mainPatientInfoLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
-        android:layout_marginTop="20dp"
-        android:text = "Go ->"
-        />
+        android:layout_below="@id/otherPatientLayout"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/patientNameTxtV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Sujeeth Emmadi"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/patientAgeTxtV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="24 years"
+            android:layout_below="@id/patientNameTxtV"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/patientGenderTxtV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/patientAgeTxtV"
+            android:text="Male"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/fullPatientInfoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:text = "Full Info"
+            />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/mainPatientInfoLayout"
+        android:visibility="gone">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/mainPatientInfoLayout">
+
+
+
+        </TableLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/fullPatientInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

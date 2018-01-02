@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".loginSuccess" />
         <activity android:name=".addPatientInfo" />
-        <activity android:name=".patientInfo"></activity>
+        <activity android:name=".patientInfo" />
+        <activity android:name=".newUserActivity"></activity>
     </application>
 
 </manifest>

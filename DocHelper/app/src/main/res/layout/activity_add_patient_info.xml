@@ -15,32 +15,53 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/enterNameTxtBox"
-                android:layout_width="325dp"
+                android:id="@+id/enterFNameTxtBox"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="20dp"
-                android:hint = "Full Name"
+                android:hint = "First Name"
+                />
+
+            <EditText
+                android:id="@+id/enterLNameTxtBox"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:hint = "Last Name"
+                android:layout_below="@id/enterFNameTxtBox"
                 />
 
             <EditText
                 android:id="@+id/enterAgeTxtBox"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@+id/enterNameTxtBox"
+                android:layout_below="@+id/enterLNameTxtBox"
                 android:layout_marginTop="25dp"
-                android:hint = "Age"
+                android:hint = "DoB (dd/mm/yyyy)"
+                android:inputType="date"
                 />
 
-            <EditText
-                android:id="@+id/genderTxtBox"
-                android:layout_width="100dp"
+            <Button
+                android:id="@+id/calenderButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/enterAgeTxtBox"
+                android:layout_below="@+id/enterLNameTxtBox"
+                android:text = "Calender"
+                />
+
+            <Spinner
+                android:id="@+id/genderSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/enterAgeTxtBox"
+                android:layout_marginTop="30dp"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@+id/enterAgeTxtBox"
-                android:layout_marginTop="25dp"
-                android:hint = "Gender"
                 />
 
             <EditText
@@ -48,7 +69,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@+id/genderTxtBox"
+                android:layout_below="@+id/genderSpinner"
                 android:layout_marginTop="25dp"
                 android:hint = "Height"
                 />
@@ -59,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/heightTxtBox"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@+id/genderTxtBox"
+                android:layout_below="@+id/genderSpinner"
                 android:layout_marginTop="25dp"
                 android:hint = "Weight"
                 />

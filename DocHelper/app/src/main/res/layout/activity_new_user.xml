@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sujeeth.dochelper.newUserActivity">
+
+    <TextView
+        android:id="@+id/newUserTitleTxtV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="New User Information"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"/>
+
+
+    <RelativeLayout
+        android:id="@+id/userLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/newUserTitleTxtV">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/docLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id = "@+id/newUserEmailTxtBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint = "Email"
+                    android:inputType="textWebEmailAddress"
+                    />
+
+                <EditText
+                    android:id="@+id/newUserPasswordTxtBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/newUserEmailTxtBox"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint = "Password"
+                    android:inputType="textPassword"/>
+
+                <Spinner
+                    android:id="@+id/occupationSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_below="@+id/newUserPasswordTxtBox"/>
+
+                <EditText
+                    android:id = "@+id/IdTxtBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:hint = "Username"
+                    android:layout_below="@id/occupationSpinner"
+                    />
+
+                <EditText
+                    android:id = "@+id/fnameTxtBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint = "First Name"
+                    android:layout_below="@id/IdTxtBox"/>
+
+                <EditText
+                    android:id = "@+id/lnameTxtBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint = "Last Name"
+                    android:layout_below="@id/fnameTxtBox" />
+
+                <EditText
+                    android:id = "@+id/qualificationTxtBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint = "Qualification"
+                    android:layout_below="@id/lnameTxtBox" />
+
+                <EditText
+                    android:id = "@+id/specializationTxtBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint = "Specialization"
+                    android:layout_below="@id/qualificationTxtBox" />
+
+                <EditText
+                    android:id = "@+id/DeptTxtBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint = "Department"
+                    android:layout_below="@id/specializationTxtBox" />
+
+                <Spinner
+                    android:id="@+id/GenderSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/DeptTxtBox"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <EditText
+                    android:id = "@+id/Addr1TxtBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:hint = "Address Line 1"
+                    android:layout_below="@id/GenderSpinner" />
+
+                <EditText
+                    android:id = "@+id/Addr2TxtBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint = "Address Line 2 (Optional)"
+                    android:layout_below="@id/Addr1TxtBox" />
+
+                <EditText
+                    android:id = "@+id/PrimaryNTxtBox"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint = "Primary Number"
+                    android:layout_below="@id/Addr2TxtBox"
+                    android:inputType="phone"/>
+
+                <Spinner
+                    android:id="@+id/primaryNumberSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Addr2TxtBox"
+                    android:layout_toRightOf="@id/PrimaryNTxtBox"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="12dp"/>
+
+                <EditText
+                    android:id = "@+id/SecondaryNTxtBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:hint = "Secondary (Optional)"
+                    android:layout_below="@id/PrimaryNTxtBox"
+                    android:inputType="phone" />
+
+                <Spinner
+                    android:id="@+id/secondaryNumberSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/PrimaryNTxtBox"
+                    android:layout_toRightOf="@id/SecondaryNTxtBox"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="12dp"/>
+
+                <TextView
+                    android:id="@+id/formStatusTxtV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/SecondaryNTxtBox"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/red"/>
+
+                <Button
+                    android:id="@+id/createButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/formStatusTxtV"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="5dp"
+                    android:text = "Create"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <Button
+                    android:id="@+id/clearButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/formStatusTxtV"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@+id/createButton"
+                    android:text ="Clear"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <Button
+                    android:id="@+id/cancelButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/formStatusTxtV"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@+id/clearButton"
+                    android:text ="Cancel"
+                    android:layout_marginTop="10dp"
+                    />
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

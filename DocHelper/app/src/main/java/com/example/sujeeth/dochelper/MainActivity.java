@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,15 +36,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth mAuth;
     private static final String TAG = "EmailPassword";
 
-    Button SignInButton, SignUpButton;
-    Button SignOutButton, ContinueButton;
-    Button AuthenticateButton;
+    private Button SignInButton, SignUpButton;
+    private Button SignOutButton, ContinueButton;
 
-    EditText usernameField, passwordField;
-    EditText signUpEmailField, signUpPasswordField;
+    private EditText usernameField, passwordField;
 
-    TextView WelcomeMsg;
-    TextView AuthenticationStatus;
+    private TextView WelcomeMsg;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -68,14 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SignOutButton = (Button)findViewById(R.id.signOutButton);
         SignOutButton.setOnClickListener(this);
 
-        AuthenticateButton = (Button)findViewById(R.id.authenticateButton);
-        AuthenticateButton.setOnClickListener(this);
-
-        signUpEmailField = (EditText)findViewById(R.id.emailTBox);
-        signUpPasswordField = (EditText) findViewById(R.id.emailPWordTBox);
-
-        AuthenticationStatus = (TextView)findViewById(R.id.authenticationStatusTxtV);
-
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -86,34 +79,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-    }
-
-    private void createUser(String uName, String pWord)
-    {
-        Log.d(TAG, "createAccount:" + uName);
-        if(!validateForm2())
-        {
-            AuthenticationStatus.setText("Error: Information is missing");
-            return;
-        }
-
-        mAuth.createUserWithEmailAndPassword(uName,pWord)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful())
-                        {
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        }else
-                        {
-                            Log.d(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
     }
 
     private void signIn(String uName, String pWord)
@@ -167,37 +132,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return valid;
     }
 
-    private boolean validateForm2() {
-        boolean valid = true;
-
-        String uName = signUpEmailField.getText().toString();
-        if (TextUtils.isEmpty(uName)) {
-            signUpEmailField.setError("Required.");
-            valid = false;
-        } else {
-            signUpEmailField.setError(null);
-        }
-
-        String pWord = signUpPasswordField.getText().toString();
-        if (TextUtils.isEmpty(pWord)) {
-            signUpPasswordField.setError("Required.");
-            valid = false;
-        } else {
-            signUpPasswordField.setError(null);
-        }
-
-        return valid;
-    }
-
     private void updateUI(FirebaseUser user) {
         if (user != null) {
             findViewById(R.id.alreadySignedInLayout).setVisibility(View.VISIBLE);
             findViewById(R.id.signInLayout).setVisibility(View.GONE);
-            findViewById(R.id.signUpLayout).setVisibility(View.GONE);
         } else {
             findViewById(R.id.alreadySignedInLayout).setVisibility(View.GONE);
             findViewById(R.id.signInLayout).setVisibility(View.VISIBLE);
-            findViewById(R.id.signUpLayout).setVisibility(View.GONE);
         }
     }
 
@@ -208,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void onClick(View view)
     {
+        Intent loginSuccessIntent;
         switch (view.getId())
         {
             case R.id.signInButton:
@@ -215,21 +157,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.signUpButton:
-                findViewById(R.id.signInLayout).setVisibility(View.GONE);
-                findViewById(R.id.signUpLayout).setVisibility(View.VISIBLE);
+                Intent create_user_intent = new Intent(this, newUserActivity.class);
+                startActivity(create_user_intent);
                 break;
 
             case R.id.continueButton:
-                Intent loginSuccessIntent = new Intent(this,loginSuccess.class);
+                loginSuccessIntent = new Intent(this,loginSuccess.class);
                 startActivity(loginSuccessIntent);
                 break;
 
             case R.id.signOutButton:
                 signOut();
-                break;
-
-            case R.id.authenticateButton:
-                createUser(signUpEmailField.getText().toString(), signUpPasswordField.getText().toString());
                 break;
         }
     }

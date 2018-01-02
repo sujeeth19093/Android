@@ -8,9 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class patientInfo extends AppCompatActivity implements View.OnClickListener{
 
-    Button Go;
+    private DatabaseReference mDatabase;
+
+    Button LookUpOtherPatient;
     EditText patientID;
 
     @Override
@@ -19,11 +26,10 @@ public class patientInfo extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_patient_info);
         Intent intent = getIntent();
 
-        Go = (Button) findViewById(R.id.goButton2);
-        Go.setOnClickListener(this);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        patientID = (EditText) findViewById(R.id.patientIDTxtBox2);
-        patientID.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        LookUpOtherPatient = (Button) findViewById(R.id.lookUpOtherPatientButton);
+        LookUpOtherPatient.setOnClickListener(this);
 
     }
 
@@ -31,8 +37,10 @@ public class patientInfo extends AppCompatActivity implements View.OnClickListen
     {
         switch (v.getId())
         {
-            case R.id.goButton2:
-
+            case R.id.lookUpOtherPatientButton:
+                Intent lookUpOtherPatientIntent = new Intent(this,loginSuccess.class);
+                //defaultUI();
+                startActivity(lookUpOtherPatientIntent);
                 break;
         }
     }

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DocHelper</string>
+    <string-array name="gender">
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Unspecified</item>
+    </string-array>
 </resources>
