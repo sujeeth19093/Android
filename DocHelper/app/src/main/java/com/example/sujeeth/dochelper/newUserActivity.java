@@ -25,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.util.Calendar;
+
 import org.w3c.dom.Text;
 
 public class newUserActivity extends AppCompatActivity implements OnClickListener {
@@ -46,11 +48,17 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
 
     private String  user_email, user_password;
 
+    private int year, month, day;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
         Intent intent = getIntent();
+
+        final Calendar cal = Calendar.getInstance();
+        year = cal.get(Calendar.YEAR);
+        month = cal.get(Calendar.MONTH);
+        day = cal.get(Calendar.DAY_OF_MONTH);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -103,15 +111,33 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
         SecondaryN.setAdapter(phoneAdapter);
     }
 
+
     @IgnoreExtraProperties
     public static class Doctor
     {
         public String user_name,first_name,last_name,qualification,specialization,dept,gender,addr,
-                primarynumber,secondarynumber,primary_phone_type,secondary_phone_type;
-        
+                primary_number,secondary_number,primary_phone_type,secondary_phone_type,created_by,
+                created_on;
+
+        //public int role_id;
+
 
         public Doctor()
         {
+            user_name = "N/A";
+            first_name = "N/A";
+            last_name = "N/A";
+            qualification = "N/A";
+            specialization = "N/A";
+            dept = "N/A";
+            gender = "N/A";
+            addr = "N/A";
+            primary_number = "N/A";
+            secondary_number = "N/A";
+            primary_phone_type = "N/A";
+            secondary_phone_type = "N/A";
+            created_on = "N/A";
+            created_by = "N/A";
         }
     }
 
@@ -142,10 +168,13 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
         doc.dept = dep;
         doc.gender = gen;
         doc.addr = ad;
-        doc.primarynumber = pri;
+        doc.primary_number = pri;
         doc.primary_phone_type = pri_ty;
-        doc.secondarynumber = sec;
+        doc.secondary_number = sec;
         doc.secondary_phone_type = sec_ty;
+
+        doc.created_by = "Admin";
+        doc.created_on = String.valueOf(day) + "/" + String.valueOf(month) + "/" + String.valueOf(year);
 
         mDatabase.child("doctors").child(doc_id).setValue(doc);
     }
