@@ -49,7 +49,7 @@
                     android:layout_below="@id/newUserEmailTxtBox"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:hint = "Password"
+                    android:hint = "Password (min 6 characters)"
                     android:inputType="textPassword"/>
 
                 <Spinner

@@ -16,25 +16,27 @@
 
             <EditText
                 android:id="@+id/enterFNameTxtBox"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
                 android:layout_marginTop="20dp"
                 android:hint = "First Name"
                 />
 
             <EditText
                 android:id="@+id/enterLNameTxtBox"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
                 android:layout_marginTop="20dp"
                 android:hint = "Last Name"
                 android:layout_below="@id/enterFNameTxtBox"
                 />
 
             <EditText
-                android:id="@+id/enterAgeTxtBox"
+                android:id="@+id/enterDOBTxtBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -50,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/enterAgeTxtBox"
+                android:layout_toRightOf="@id/enterDOBTxtBox"
                 android:layout_below="@+id/enterLNameTxtBox"
                 android:text = "Calender"
                 />
@@ -59,7 +61,7 @@
                 android:id="@+id/genderSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/enterAgeTxtBox"
+                android:layout_below="@id/enterDOBTxtBox"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="25dp"
                 />
@@ -71,7 +73,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_below="@+id/genderSpinner"
                 android:layout_marginTop="25dp"
-                android:hint = "Height"
+                android:hint = "Height(cm)"
                 />
 
             <EditText
@@ -82,15 +84,88 @@
                 android:layout_marginLeft="25dp"
                 android:layout_below="@+id/genderSpinner"
                 android:layout_marginTop="25dp"
-                android:hint = "Weight"
+                android:hint = "Weight(kg)"
                 />
+
+            <Spinner
+                android:id="@+id/bloodGrpSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/heightTxtBox"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="30dp"
+                />
+
+            <EditText
+                android:id="@+id/patientAddr1TxtBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_below= "@id/bloodGrpSpinner"
+                android:layout_marginTop="25dp"
+                android:hint = "Address Line 1"
+                />
+
+            <EditText
+                android:id="@+id/patientAddr2TxtBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_below= "@id/patientAddr1TxtBox"
+                android:layout_marginTop="25dp"
+                android:hint = "Address Line 2"
+                />
+
+            <EditText
+                android:id = "@+id/patientPrimaryNTxtBox"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="25dp"
+                android:hint = "Primary Number"
+                android:layout_below="@id/patientAddr2TxtBox"
+                android:inputType="phone"/>
+
+            <Spinner
+                android:id="@+id/patientPrimaryNumberSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/patientAddr2TxtBox"
+                android:layout_toRightOf="@id/patientPrimaryNTxtBox"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"/>
+
+            <EditText
+                android:id = "@+id/patientSecondaryNTxtBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="25dp"
+                android:hint = "Secondary (Optional)"
+                android:layout_below="@id/patientPrimaryNTxtBox"
+                android:inputType="phone" />
+
+            <Spinner
+                android:id="@+id/patientSecondaryNumberSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/patientPrimaryNTxtBox"
+                android:layout_toRightOf="@id/patientSecondaryNTxtBox"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"/>
 
             <TextView
                 android:id="@+id/BPTxtV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@+id/heightTxtBox"
+                android:layout_below="@+id/patientSecondaryNTxtBox"
                 android:layout_marginTop="35dp"
                 android:text="Blood Pressure:"
                 android:textSize="20dp"
@@ -101,7 +176,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/BPTxtV"
-                android:layout_below="@+id/heightTxtBox"
+                android:layout_below="@+id/patientSecondaryNTxtBox"
                 android:layout_marginTop="25dp"
                 />
 
@@ -111,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/upperBPTxtBox"
                 android:layout_marginLeft="5dp"
-                android:layout_below="@+id/heightTxtBox"
+                android:layout_below="@+id/patientSecondaryNTxtBox"
                 android:layout_marginTop="25dp"
                 android:text="/"
                 android:textSize="30dp"
@@ -123,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/Const_BPdividerTxtV"
                 android:layout_marginLeft="5dp"
-                android:layout_below="@+id/heightTxtBox"
+                android:layout_below="@+id/patientSecondaryNTxtBox"
                 android:layout_marginTop="25dp"
                 />
 
@@ -147,25 +222,16 @@
                 android:layout_toRightOf="@id/DiabeticTxtV"
                 />
 
-            <TextView
-                android:id="@+id/historyTxtV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text = "History:"
-                android:textSize="20dp"
-                android:layout_marginLeft="25dp"
-                android:layout_below="@+id/DiabeticTxtV"
-                android:layout_marginTop="25dp"
-                />
-
             <EditText
-                android:id="@+id/patientHistoryTxtBox"
-                android:layout_width="300dp"
+                android:id="@+id/patientEmailTxtBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:hint = "Email ID"
                 android:layout_below="@+id/DiabeticTxtV"
-                android:layout_toRightOf="@id/historyTxtV"
+
                 />
 
             <Button
@@ -174,7 +240,7 @@
                 android:layout_height="wrap_content"
                 android:text = "Cancel"
                 android:layout_marginLeft="20dp"
-                android:layout_below="@id/patientHistoryTxtBox"
+                android:layout_below="@id/patientEmailTxtBox"
                 android:layout_toRightOf="@id/saveButton"
                 android:layout_marginTop="10dp"
                 />
@@ -184,7 +250,7 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text = "Save"
-                android:layout_below="@id/patientHistoryTxtBox"
+                android:layout_below="@id/patientEmailTxtBox"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="170dp"
                 />

@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import java.util.Calendar;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.IgnoreExtraProperties;
@@ -24,13 +26,15 @@ import com.google.firebase.database.IgnoreExtraProperties;
 public class addPatientInfo extends AppCompatActivity implements OnClickListener{
 
     private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
 
     private Button Save, Clear, CalenderB;
-    private EditText Name, Age, Height, Weight, Bp_Over, Bp_Under, History;
+    private EditText FName,LName, Dob, Height, Weight, Addr1, Addr2, PrimaryN, SecondaryN, Bp_Over, Bp_Under, Email;
     private CheckBox Diabetic;
-    private Spinner Gender;
+    private Spinner Gender, BloodGrp, PrimaryNType, SecondaryNtype;
 
     private int year, month, day;
+    private int present_year, present_month, present_day;
 
 
     @Override
@@ -45,6 +49,11 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
         month = cal.get(Calendar.MONTH);
         day = cal.get(Calendar.DAY_OF_MONTH);
 
+        present_year = cal.get(Calendar.YEAR);
+        present_month = cal.get(Calendar.MONTH) + 1;
+        present_day = cal.get(Calendar.DAY_OF_MONTH);
+
+        mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         Save = (Button) findViewById(R.id.saveButton);
@@ -54,13 +63,18 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
         CalenderB = (Button) findViewById(R.id.calenderButton);
         CalenderB.setOnClickListener(this);
 
-        Name = (EditText) findViewById(R.id.enterFNameTxtBox);
-        Age = (EditText) findViewById(R.id.enterAgeTxtBox);
+        FName = (EditText) findViewById(R.id.enterFNameTxtBox);
+        LName = (EditText) findViewById(R.id.enterLNameTxtBox);
+        Dob = (EditText) findViewById(R.id.enterDOBTxtBox);
         Height = (EditText) findViewById(R.id.heightTxtBox);
         Weight = (EditText) findViewById(R.id.weightTxtBox);
+        Addr1 = (EditText) findViewById(R.id.patientAddr1TxtBox);
+        Addr2 = (EditText) findViewById(R.id.patientAddr2TxtBox);
+        PrimaryN = (EditText) findViewById(R.id.patientPrimaryNTxtBox);
+        SecondaryN = (EditText) findViewById(R.id.patientSecondaryNTxtBox);
         Bp_Over = (EditText) findViewById(R.id.upperBPTxtBox);
         Bp_Under = (EditText) findViewById(R.id.lowerBPTxtBox);
-        History = (EditText) findViewById(R.id.patientHistoryTxtBox);
+        Email = (EditText) findViewById(R.id.patientEmailTxtBox);
 
         Diabetic = (CheckBox) findViewById(R.id.diabeticChkBox);
 
@@ -70,12 +84,32 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
                 android.R.layout.simple_spinner_item, gender_string);
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Gender.setAdapter(myAdapter);
+
+        PrimaryNType = (Spinner) findViewById(R.id.patientPrimaryNumberSpinner);
+        SecondaryNtype = (Spinner) findViewById(R.id.patientSecondaryNumberSpinner);
+
+        String phone_type_string[]={"Mobile","Landline"};
+        ArrayAdapter<String> phoneAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, phone_type_string);
+        phoneAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        PrimaryNType.setAdapter(phoneAdapter);
+        SecondaryNtype.setAdapter(phoneAdapter);
+
+        BloodGrp = (Spinner) findViewById(R.id.bloodGrpSpinner);
+        String bld_grp[] = {"Select blood group", "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
+        ArrayAdapter<String> bloodgrpAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, bld_grp);
+        bloodgrpAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        BloodGrp.setAdapter(bloodgrpAdapter);
     }
 
     @IgnoreExtraProperties
     public static class Patient
     {
-        public String name, age, gender, height, weight, bp_over, bp_under, history;
+        public String first_name,last_name,date_of_birth,gender,height,weight,
+                blood_group,address,primary_number,primary_number_type,secondary_number,
+                secondary_number_type,blood_pressure,email_id,created_on,created_by;
         public boolean diabetic;
 
         public Patient()
@@ -84,23 +118,68 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
         }
     }
 
-    private void addNewPatient(String p_name,String p_age/*,String p_gender*/,String p_height,
-                               String p_weight,String p_bp_over,String p_bp_under,String p_history, boolean p_diabetic)
+    private void addNewPatient(String fname,String lname,String dob,String gen,String hgt, String wgt,
+                               String bgp,String addr,String pn,String pnt,String sn,String snt,String bp,
+                               String eml,String con,boolean dia)
     {
-        String p_ID = p_name + "001";
+        String p_id = lname + ":" + fname;
 
-        Patient patient = new Patient();
-        patient.name = p_name;
-        patient.age = p_age;
-        patient.gender = "M";
-        patient.height = p_height;
-        patient.weight = p_weight;
-        patient.bp_over = p_bp_over;
-        patient.bp_under = p_bp_under;
-        patient.history = p_history;
-        patient.diabetic = p_diabetic;
+        Patient p = new Patient();
+        p.first_name = fname;
+        p.last_name = lname;
+        p.date_of_birth =dob;
+        p.gender = gen;
+        p.height = hgt;
+        p.weight = wgt;
+        p.blood_group = bgp;
+        p.address = addr;
+        p.primary_number = pn;
+        p.primary_number_type = pnt;
+        p.secondary_number = sn;
+        p.secondary_number_type = snt;
+        p.blood_pressure = bp;
+        p.email_id = eml;
+        p.created_on = con;
+        p.diabetic = dia;
 
-        mDatabase.child("patients").child(p_ID).setValue(patient);
+        FirebaseUser user = mAuth.getCurrentUser();
+        p.created_by = user.getUid();
+
+        mDatabase.child("Patients").child(p_id).setValue(p);
+    }
+
+    private void populateDatabase()
+    {
+        String gen = "",addr = "",bp = "",con = "";
+        switch (Gender.getSelectedItemPosition())
+        {
+            case 1:
+                gen = "M";
+                break;
+            case 2:
+                gen = "F";
+                break;
+            case 3:
+                gen = "U";
+                break;
+        }
+
+        if(Addr2.getText().toString().equals(""))
+        {
+            addr = Addr1.getText().toString();
+        }else
+        {
+            addr = Addr1.getText().toString() + ", " + Addr2.getText().toString();
+        }
+
+        bp = Bp_Over.getText().toString() + "/" + Bp_Under.getText().toString();
+
+        con = present_day + "/" + present_month + "/" + present_year;
+
+        addNewPatient(FName.getText().toString(),LName.getText().toString(),Dob.getText().toString(),
+                    gen,Height.getText().toString(),Weight.getText().toString(),BloodGrp.getSelectedItem().toString(),
+                    addr,PrimaryN.getText().toString(),PrimaryNType.getSelectedItem().toString(),SecondaryN.getText().toString(),
+                SecondaryNtype.getSelectedItem().toString(),bp,Email.getText().toString(),con,Diabetic.isChecked());
     }
 
     private boolean validateForm()
@@ -136,9 +215,7 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
             case R.id.saveButton:
                 if(validateForm())
                 {
-                    addNewPatient(Name.getText().toString(),Age.getText().toString(),Height.getText().toString(),
-                            Weight.getText().toString(),Bp_Over.getText().toString(),Bp_Under.getText().toString(),History.getText().toString(),
-                            Diabetic.isChecked());
+                    populateDatabase();
                     myToast = Toast.makeText(getApplicationContext(),"Saved",Toast.LENGTH_SHORT);
                     myToast.show();
                     clearFunc((ViewGroup) findViewById(R.id.scrollLayout));
@@ -179,7 +256,7 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
             year = i;
             month = i1;
             day = i2;
-            Age.setText(day+"/"+month+"/"+year);
+            Dob.setText(day+"/"+month+"/"+year);
         }
     };
 }

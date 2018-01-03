@@ -68,7 +68,7 @@
             android:layout_centerHorizontal="true"
             android:layout_above="@id/continueButton"
             android:layout_marginBottom="50dp"
-            android:text = "Welcome Sujeeth"
+            android:text = ""
             android:textColor="@color/black"
             android:textSize="20dp"
             />

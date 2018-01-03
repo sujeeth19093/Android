@@ -34,12 +34,12 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
     private TextView  FormCompleteStatus;
 
     private EditText Email,Password,UserName,FName, LName, Qualification,
-                    Specialization, Department, /*Role,*/ Address1,
-                    Address2, PrimaryNumber, SecondaryNumber/*,PatientType,Status,
-                    CreatedBy,CreatedOn,ModifiedBy,ModifiedOn*/;
+                    Specialization, Department, Address1,
+                    Address2, PrimaryNumber, SecondaryNumber;
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
+    private FirebaseUser nw_user;
     private static final String TAG = "EmailPassword";
 
     private Button Create, Clear, Cancel;
@@ -57,7 +57,7 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
 
         final Calendar cal = Calendar.getInstance();
         year = cal.get(Calendar.YEAR);
-        month = cal.get(Calendar.MONTH);
+        month = cal.get(Calendar.MONTH) + 1;
         day = cal.get(Calendar.DAY_OF_MONTH);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -67,6 +67,11 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
 
         Create = (Button) findViewById(R.id.createButton);
         Create.setOnClickListener(this);
+        Clear = (Button) findViewById(R.id.clearButton);
+        Clear.setOnClickListener(this);
+        Cancel = (Button) findViewById(R.id.cancelButton);
+        Cancel.setOnClickListener(this);
+
 
         Email = (EditText)findViewById(R.id.newUserEmailTxtBox);
         Password = (EditText)findViewById(R.id.newUserPasswordTxtBox);
@@ -76,17 +81,10 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
         Qualification = (EditText) findViewById(R.id.qualificationTxtBox);
         Specialization = (EditText) findViewById(R.id.specializationTxtBox);
         Department = (EditText) findViewById(R.id.DeptTxtBox);
-        //
         Address1 = (EditText) findViewById(R.id.Addr1TxtBox);
         Address2 = (EditText) findViewById(R.id.Addr2TxtBox);
         PrimaryNumber = (EditText) findViewById(R.id.PrimaryNTxtBox);
         SecondaryNumber = (EditText) findViewById(R.id.SecondaryNTxtBox);
-        //
-        //
-        //
-        //
-        //
-        //
 
         OccupationSpinner = (Spinner) findViewById(R.id.occupationSpinner);
         Gender = (Spinner) findViewById(R.id.GenderSpinner);
@@ -117,9 +115,7 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
     {
         public String user_name,first_name,last_name,qualification,specialization,dept,gender,addr,
                 primary_number,secondary_number,primary_phone_type,secondary_phone_type,created_by,
-                created_on;
-
-        //public int role_id;
+                created_on,role;
 
 
         public Doctor()
@@ -138,14 +134,11 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
             secondary_phone_type = "N/A";
             created_on = "N/A";
             created_by = "N/A";
+            role = "N/A";
         }
     }
 
-    private void updateUI(FirebaseUser user)
-    {
-
-    }
-
+    //NEED TO FINISH
     private boolean validateForm()
     {
         return true;
@@ -155,10 +148,8 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
 
     private void addNewUser(String usname, String frname, String lsname, String qual, String sp,
                             String dep, String gen, String ad, String pri, String pri_ty, String sec,
-                            String sec_ty)
+                            String sec_ty,String r_id)
     {
-        String doc_id = lsname+":"+frname;
-
         Doctor doc = new Doctor();
         doc.user_name = usname;
         doc.first_name = frname;
@@ -172,11 +163,12 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
         doc.primary_phone_type = pri_ty;
         doc.secondary_number = sec;
         doc.secondary_phone_type = sec_ty;
+        doc.role = r_id;
 
         doc.created_by = "Admin";
         doc.created_on = String.valueOf(day) + "/" + String.valueOf(month) + "/" + String.valueOf(year);
 
-        mDatabase.child("doctors").child(doc_id).setValue(doc);
+        mDatabase.child("users").child(nw_user.getUid()).setValue(doc);
     }
 
     private void createUser(String uName, String pWord)
@@ -204,7 +196,8 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
 
     private void populateDatabase()
     {
-        String ad;
+        String ad,gen = "",pri_ty,sec_ty,r_id;
+
         if(Address2.getText().toString().equals(""))
         {
              ad = Address1.getText().toString();
@@ -213,13 +206,26 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
              ad = Address1.getText().toString() + " " + Address2.getText().toString();
         }
 
-        String gen = Gender.getSelectedItem().toString();
-        String pri_ty = PrimaryN.getSelectedItem().toString();
-        String sec_ty = SecondaryN.getSelectedItem().toString();
+        switch (Gender.getSelectedItemPosition())
+        {
+            case 1:
+                gen = "M";
+                break;
+            case 2:
+                gen = "F";
+                break;
+            case 3:
+                gen = "U";
+                break;
+        }
+
+        pri_ty = PrimaryN.getSelectedItem().toString();
+        sec_ty = SecondaryN.getSelectedItem().toString();
+        r_id = OccupationSpinner.getSelectedItem().toString();
 
         addNewUser(UserName.getText().toString(), FName.getText().toString(), LName.getText().toString(),
                 Qualification.getText().toString(),Specialization.getText().toString(),Department.getText().toString(),
-                gen,ad,PrimaryNumber.getText().toString(),pri_ty,SecondaryNumber.getText().toString(),sec_ty);
+                gen,ad,PrimaryNumber.getText().toString(),pri_ty,SecondaryNumber.getText().toString(),sec_ty,r_id);
     }
 
     private void clearFunc(ViewGroup group)
@@ -248,13 +254,19 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
 
                 user_email = Email.getText().toString();
                 user_password = Password.getText().toString();
+
                 createUser(user_email,user_password);
-
-                populateDatabase();
-
-                Toast mytoast;
-                mytoast = Toast.makeText(getApplicationContext(),"pushed",Toast.LENGTH_LONG);
-                mytoast.show();
+                while(true)
+                {
+                    nw_user = mAuth.getCurrentUser();
+                    if(nw_user != null)
+                    {
+                        populateDatabase();
+                        break;
+                    }
+                }
+                Intent success_intent = new Intent(this, MainActivity.class);
+                startActivity(success_intent);
                 break;
 
             case R.id.clearButton:
