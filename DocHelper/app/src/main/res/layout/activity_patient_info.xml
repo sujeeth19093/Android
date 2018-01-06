@@ -10,7 +10,7 @@
         android:id = "@+id/otherPatientLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <Button
             android:id="@+id/lookUpOtherPatientButton"
@@ -32,7 +32,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:visibility="gone"
+        android:visibility="visible"
         >
 
         <TextView
@@ -74,29 +74,11 @@
             />
     </RelativeLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/mainPatientInfoLayout"
-        android:visibility="gone">
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/mainPatientInfoLayout">
-
-
-
-        </TableLayout>
-
-    </ScrollView>
-
-    <RelativeLayout
-        android:id="@+id/fullPatientInfoLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </RelativeLayout>
+    </ListView>
 
 
 </RelativeLayout>

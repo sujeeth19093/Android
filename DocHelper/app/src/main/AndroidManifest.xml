@@ -19,7 +19,9 @@
         <activity android:name=".loginSuccess" />
         <activity android:name=".addPatientInfo" />
         <activity android:name=".patientInfo" />
-        <activity android:name=".newUserActivity"></activity>
+        <activity android:name=".newUserActivity" />
+        <activity android:name=".fullPatientInfo" />
+        <activity android:name=".updatePatientInfo"></activity>
     </application>
 
 </manifest>

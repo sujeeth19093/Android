@@ -241,19 +241,52 @@
                 android:text = "Cancel"
                 android:layout_marginLeft="20dp"
                 android:layout_below="@id/patientEmailTxtBox"
-                android:layout_toRightOf="@id/saveButton"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="25dp"
                 />
 
             <Button
-                android:id="@+id/saveButton"
+                android:id="@+id/clearButton"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:text = "Save"
+                android:text = "Clear"
                 android:layout_below="@id/patientEmailTxtBox"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="170dp"
+                android:layout_centerHorizontal="true"
                 />
+
+            <RelativeLayout
+                android:id="@+id/addLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/patientEmailTxtBox"
+                android:visibility="visible">
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "Save"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="25dp"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/updateLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/patientEmailTxtBox"
+                android:visibility="gone">
+                <Button
+                    android:id="@+id/updateButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "Update"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="25dp"
+                    />
+            </RelativeLayout>
 
         </RelativeLayout>
 

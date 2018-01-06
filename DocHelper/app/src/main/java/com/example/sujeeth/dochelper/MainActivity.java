@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView WelcomeMsg;
 
-    newUserActivity.Doctor doc;
+    User doc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    newUserActivity.Doctor doc = dataSnapshot.getValue(newUserActivity.Doctor.class);
+                    User doc = dataSnapshot.getValue(User.class);
                     WelcomeMsg.setText("Welcome " + doc.first_name);
                 }
 

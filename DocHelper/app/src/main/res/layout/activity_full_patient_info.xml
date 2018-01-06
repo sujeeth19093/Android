@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sujeeth.dochelper.fullPatientInfo">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/pfname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "First Name:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:id="@+id/fnameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pfname"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/plname"
+                android:layout_below="@+id/pfname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Last Name:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                />
+
+            <TextView
+                android:id="@+id/lnameTV"
+                android:layout_below="@+id/fnameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/plname"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/pdob"
+                android:layout_below="@+id/plname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Date of Birth:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                />
+
+            <TextView
+                android:id="@+id/dobTV"
+                android:layout_below="@+id/lnameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pdob"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/pgen"
+                android:layout_below="@+id/pdob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Gender:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                />
+
+            <TextView
+                android:id="@+id/genTV"
+                android:layout_below="@+id/dobTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pgen"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/phgt"
+                android:layout_below="@+id/pgen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Height:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                />
+
+            <TextView
+                android:id="@+id/hgtTV"
+                android:layout_below="@+id/genTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/phgt"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/pwgt"
+                android:layout_below="@+id/phgt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Weight:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                />
+
+            <TextView
+                android:id="@+id/wgtTV"
+                android:layout_below="@+id/hgtTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pwgt"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/pbgrp"
+                android:layout_below="@+id/pwgt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Blood Group:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                />
+
+            <TextView
+                android:id="@+id/bgrpTV"
+                android:layout_below="@+id/wgtTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pbgrp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/paddr"
+                android:layout_below="@+id/pbgrp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Address:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                />
+
+            <TextView
+                android:id="@+id/addrTV"
+                android:layout_below="@+id/bgrpTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/paddr"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/pprim"
+                android:layout_below="@+id/paddr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Primary Phone:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                />
+
+            <TextView
+                android:id="@+id/primTV"
+                android:layout_below="@+id/addrTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pprim"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/psec"
+                android:layout_below="@+id/pprim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Secondary Phone:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                />
+
+            <TextView
+                android:id="@+id/secTV"
+                android:layout_below="@+id/primTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/psec"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/peml"
+                android:layout_below="@+id/psec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Email ID:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                />
+
+            <TextView
+                android:id="@+id/emlTV"
+                android:layout_below="@+id/secTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pdob"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/pdia"
+                android:layout_below="@+id/peml"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Diabetic:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                />
+
+            <TextView
+                android:id="@+id/diaTV"
+                android:layout_below="@+id/emlTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pdia"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/pbp"
+                android:layout_below="@+id/pdia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Blood Pressure:"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                />
+
+            <TextView
+                android:id="@+id/bpTV"
+                android:layout_below="@+id/diaTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pbp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:id="@+id/editFullInfoButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pbp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text = "Edit Info"
+                />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

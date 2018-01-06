@@ -3,6 +3,7 @@ package com.example.sujeeth.dochelper;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,22 +20,27 @@ import java.util.Calendar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.ValueEventListener;
 
 public class addPatientInfo extends AppCompatActivity implements OnClickListener{
 
-    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabase, ref;
     private FirebaseAuth mAuth;
 
-    private Button Save, Clear, CalenderB;
+    private Button Save, Clear, Cancel, Update, CalenderB;
     private EditText FName,LName, Dob, Height, Weight, Addr1, Addr2, PrimaryN, SecondaryN, Bp_Over, Bp_Under, Email;
     private CheckBox Diabetic;
     private Spinner Gender, BloodGrp, PrimaryNType, SecondaryNtype;
 
     private int year, month, day;
     private int present_year, present_month, present_day;
+    private String p_id;
+    private boolean update = false;
 
 
     @Override
@@ -43,6 +49,21 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_patient_info);
         Intent intent = getIntent();
+        if(intent.getExtras() != null)
+        {
+            p_id = intent.getStringExtra("patientID");
+            if(!p_id.equals(""))
+            {
+                updateUI(1);
+                update = true;
+            }else
+            {
+                updateUI(0);
+            }
+        }else
+        {
+            updateUI(0);
+        }
 
         final Calendar cal = Calendar.getInstance();
         year = cal.get(Calendar.YEAR);
@@ -58,8 +79,12 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
 
         Save = (Button) findViewById(R.id.saveButton);
         Save.setOnClickListener(this);
-        Clear = (Button) findViewById(R.id.cancelButton);
+        Clear = (Button) findViewById(R.id.clearButton);
         Clear.setOnClickListener(this);
+        Cancel = (Button)findViewById(R.id.cancelButton);
+        Cancel.setOnClickListener(this);
+        Update = (Button) findViewById(R.id.updateButton);
+        Update.setOnClickListener(this);
         CalenderB = (Button) findViewById(R.id.calenderButton);
         CalenderB.setOnClickListener(this);
 
@@ -102,29 +127,103 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
                 android.R.layout.simple_spinner_item, bld_grp);
         bloodgrpAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         BloodGrp.setAdapter(bloodgrpAdapter);
-    }
 
-    @IgnoreExtraProperties
-    public static class Patient
-    {
-        public String first_name,last_name,date_of_birth,gender,height,weight,
-                blood_group,address,primary_number,primary_number_type,secondary_number,
-                secondary_number_type,blood_pressure,email_id,created_on,created_by;
-        public boolean diabetic;
+        if(update){
+            ref = mDatabase.child("Patients").child(p_id);
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    updateInfo(dataSnapshot);
+                }
 
-        public Patient()
-        {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
+                }
+            });
         }
     }
 
-    private void addNewPatient(String fname,String lname,String dob,String gen,String hgt, String wgt,
+    private void updateUI(int i)
+    {
+        if(i == 0)
+        {
+            findViewById(R.id.addLayout).setVisibility(View.VISIBLE);
+            findViewById(R.id.updateLayout).setVisibility(View.GONE);
+        }
+
+        if(i == 1)
+        {
+            findViewById(R.id.addLayout).setVisibility(View.GONE);
+            findViewById(R.id.updateLayout).setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void updateInfo(DataSnapshot dataSnapshot)
+    {
+        String str;
+        String[] bp;
+        Patient p = dataSnapshot.getValue(Patient.class);
+
+        FName.setText(p.first_name);
+        LName.setText(p.last_name);
+        Dob.setText(p.date_of_birth);
+        Height.setText(p.height);
+        Weight.setText(p.weight);
+        Addr1.setText(p.address);
+        PrimaryN.setText(p.primary_number);
+        SecondaryN.setText(p.secondary_number);
+        Email.setText(p.email_id);
+
+        str = p.blood_pressure;
+        bp = str.split("/");
+        Bp_Over.setText(bp[0]);
+        Bp_Under.setText(bp[1]);
+
+        if(p.diabetic)
+            Diabetic.setChecked(true);
+        else
+            Diabetic.setChecked(false);
+
+        switch(p.gender)
+        {
+            case "M": Gender.setSelection(1); break;
+            case "F": Gender.setSelection(2); break;
+            case "U": Gender.setSelection(3); break;
+        }
+
+        switch (p.primary_number_type)
+        {
+            case "Mobile": PrimaryNType.setSelection(0); break;
+            case "Landline": PrimaryNType.setSelection(1); break;
+        }
+
+        switch (p.secondary_number_type)
+        {
+            case "Mobile": SecondaryNtype.setSelection(0); break;
+            case "Landline": SecondaryNtype.setSelection(1); break;
+        }
+
+        switch (p.blood_group)
+        {
+            case "A+": BloodGrp.setSelection(1);break;
+            case "A-": BloodGrp.setSelection(2);break;
+            case "B+": BloodGrp.setSelection(3);break;
+            case "B-": BloodGrp.setSelection(4);break;
+            case "AB+": BloodGrp.setSelection(5);break;
+            case "AB-": BloodGrp.setSelection(6);break;
+            case "O+": BloodGrp.setSelection(7);break;
+            case "O-": BloodGrp.setSelection(8);break;
+        }
+    }
+
+    private void addOrUpdatePatient(String fname,String lname,String dob,String gen,String hgt, String wgt,
                                String bgp,String addr,String pn,String pnt,String sn,String snt,String bp,
                                String eml,String con,boolean dia)
     {
         String p_id = lname + ":" + fname;
 
-        Patient p = new Patient();
+        final Patient p = new Patient();
         p.first_name = fname;
         p.last_name = lname;
         p.date_of_birth =dob;
@@ -139,13 +238,31 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
         p.secondary_number_type = snt;
         p.blood_pressure = bp;
         p.email_id = eml;
-        p.created_on = con;
         p.diabetic = dia;
 
         FirebaseUser user = mAuth.getCurrentUser();
-        p.created_by = user.getUid();
 
-        mDatabase.child("Patients").child(p_id).setValue(p);
+        if(update)
+        {
+            p.modified_by = user.getUid();
+            p.modified_on = con;
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    ref.setValue(p);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }else
+        {
+            p.created_by = user.getUid();
+            p.created_on = con;
+            mDatabase.child("Patients").child(p_id).setValue(p);
+        }
     }
 
     private void populateDatabase()
@@ -176,7 +293,7 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
 
         con = present_day + "/" + present_month + "/" + present_year;
 
-        addNewPatient(FName.getText().toString(),LName.getText().toString(),Dob.getText().toString(),
+        addOrUpdatePatient(FName.getText().toString(),LName.getText().toString(),Dob.getText().toString(),
                     gen,Height.getText().toString(),Weight.getText().toString(),BloodGrp.getSelectedItem().toString(),
                     addr,PrimaryN.getText().toString(),PrimaryNType.getSelectedItem().toString(),SecondaryN.getText().toString(),
                 SecondaryNtype.getSelectedItem().toString(),bp,Email.getText().toString(),con,Diabetic.isChecked());
@@ -225,6 +342,23 @@ public class addPatientInfo extends AppCompatActivity implements OnClickListener
                 {
 
                 }
+                break;
+            case R.id.updateButton:
+                if(validateForm())
+                {
+                    populateDatabase();
+                    myToast = Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_SHORT);
+                    myToast.show();
+                    Intent nextIntent = new Intent(this, fullPatientInfo.class);
+                    nextIntent.putExtra("patientID",p_id);
+                    startActivity(nextIntent);
+                }else
+                {
+
+                }
+                break;
+            case R.id.clearButton:
+                clearFunc((ViewGroup) findViewById(R.id.scrollLayout));
                 break;
             case R.id.cancelButton:
                 clearFunc((ViewGroup) findViewById(R.id.scrollLayout));

@@ -24,9 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.IgnoreExtraProperties;
-
 import java.util.Calendar;
-
 import org.w3c.dom.Text;
 
 public class newUserActivity extends AppCompatActivity implements OnClickListener {
@@ -110,7 +108,7 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
     }
 
 
-    @IgnoreExtraProperties
+   /* @IgnoreExtraProperties
     public static class Doctor
     {
         public String user_name,first_name,last_name,qualification,specialization,dept,gender,addr,
@@ -136,7 +134,7 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
             created_by = "N/A";
             role = "N/A";
         }
-    }
+    }*/
 
     //NEED TO FINISH
     private boolean validateForm()
@@ -150,7 +148,7 @@ public class newUserActivity extends AppCompatActivity implements OnClickListene
                             String dep, String gen, String ad, String pri, String pri_ty, String sec,
                             String sec_ty,String r_id)
     {
-        Doctor doc = new Doctor();
+        User doc = new User();
         doc.user_name = usname;
         doc.first_name = frname;
         doc.last_name = lsname;

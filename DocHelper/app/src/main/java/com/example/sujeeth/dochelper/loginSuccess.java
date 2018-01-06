@@ -56,13 +56,14 @@ public class loginSuccess extends AppCompatActivity implements View.OnClickListe
         switch(v.getId())
         {
             case R.id.goButton:
-                mDatabase.child("patients").child(patientID.getText().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
+                final String id = patientID.getText().toString();
+                mDatabase.child("Patients").child(patientID.getText().toString()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if(dataSnapshot.exists())
                         {
                             Intent goIntent = new Intent(loginSuccess.this, patientInfo.class);
-                            defaultUI();
+                            goIntent.putExtra("patientID",id);
                             startActivity(goIntent);
                         }else
                         {
