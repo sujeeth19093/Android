@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sujeeth.dochelper.newPatientVisit">
+
+    <ScrollView
+        android:id="@+id/pVscrollLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/pVTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "New Visit Input"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/pVheightTxtBox"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@+id/pVTitle"
+                android:layout_marginTop="25dp"
+                android:hint = "Height(cm)"
+                />
+
+            <EditText
+                android:id="@+id/pVweightTxtBox"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pVheightTxtBox"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@+id/pVTitle"
+                android:layout_marginTop="25dp"
+                android:hint = "Weight(kg)"
+                />
+
+            <EditText
+                android:id="@+id/pVtempTBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pVheightTxtBox"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:hint = "Temperature (*F)"/>
+
+            <TextView
+                android:id="@+id/pVBPTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pVtempTBox"
+                android:text = "Blood Pressure:"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginLeft="25dp"/>
+
+            <EditText
+                android:id="@+id/pVupperBPTBox"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pVBPTxtV"
+                android:layout_below="@+id/pVtempTBox"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="10dp"
+                />
+
+            <TextView
+                android:id="@+id/pVConst_BPdividerTxtV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pVupperBPTBox"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/pVtempTBox"
+                android:layout_marginTop="25dp"
+                android:text="/"
+                android:textSize="30dp"
+                />
+
+            <EditText
+                android:id="@+id/pVlowerBPTxtBox"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/pVConst_BPdividerTxtV"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/pVtempTBox"
+                android:layout_marginTop="25dp"
+                />
+
+            <EditText
+                android:id="@+id/pVObservationsTBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_below="@id/pVupperBPTBox"
+                android:hint = "Observations"/>
+
+            <EditText
+                android:id="@+id/pVLabRecTBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_below="@id/pVObservationsTBox"
+                android:hint = "Lab Recommendations"/>
+
+
+            <EditText
+                android:id="@+id/pVnxtVisitTBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@+id/pVLabRecTBox"
+                android:hint =  "Next Visit (dd/mm/yyyy)"/>
+
+            <Button
+                android:id="@+id/pVnxtVisitCalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pVLabRecTBox"
+                android:layout_toRightOf="@+id/pVnxtVisitTBox"
+                android:text = "Calender"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"/>
+
+            <TableLayout
+                android:id="@+id/pVPresc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pVnxtVisitTBox"
+                android:layout_marginTop="25dp"
+                android:visibility="gone">
+
+                <TableRow>
+                    <TextView
+                        android:layout_weight="1"
+                        android:text = "Prescription Table"
+                        android:textSize="25dp"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:background="@drawable/border_shape"/>
+                </TableRow>
+
+            </TableLayout>
+
+            <RelativeLayout
+                android:id="@+id/pVPrescAddLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pVPresc"
+                android:visibility="gone"
+                >
+
+                <EditText
+                    android:id="@+id/pVmedName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:hint = "Medicine Name"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"/>
+
+               <Spinner
+                   android:id="@+id/pVmedTypeSpinner"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/pVmedName"
+                   android:layout_marginLeft="25dp"
+                   android:layout_marginTop="10dp"
+                   android:layout_marginRight="25dp"/>
+
+                <EditText
+                    android:id="@+id/pVmedDose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Dose"
+                    android:layout_marginTop="25dp"
+                    android:layout_below="@id/pVmedTypeSpinner"
+                    android:layout_marginLeft="25dp"/>
+
+                <CheckBox
+                android:id="@+id/pVbbreakfastChkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pVmedDose"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:text="Before Breakfast"/>
+
+                <CheckBox
+                    android:id="@+id/pVbreakfastChkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pVmedDose"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="25dp"
+                    android:text = "Breakfast"/>
+
+                <CheckBox
+                    android:id="@+id/pVlunchChkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pVbbreakfastChkBox"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:text="Lunch"/>
+
+                <CheckBox
+                    android:id="@+id/pVdinnerChkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pVbreakfastChkBox"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="25dp"
+                    android:layout_alignStart="@+id/pVbreakfastChkBox"
+                    android:layout_alignLeft="@+id/pVbreakfastChkBox"
+                    android:text = "Dinner"/>
+
+                <EditText
+                    android:id="@+id/pVmedRepeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pVlunchChkBox"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:hint = "Repeat every ..." />
+
+                <EditText
+                    android:id="@+id/pVmedQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pVdinnerChkBox"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="25dp"
+                    android:hint = "Quantity"/>
+
+                <EditText
+                    android:id="@+id/pVmedInstr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_below="@id/pVmedRepeat"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:hint="Medicine Application Instructions"/>
+
+                <Button
+                    android:id="@+id/SAVE_MED_BTN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_below="@id/pVmedInstr"
+                    android:text = "Save Medicine"
+                    />
+
+                <Button
+                    android:id="@+id/CANCEL_MED_BTN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pVmedInstr"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="25dp"
+                    android:text = "Cancel"
+                    />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/pVaddPrescButton"
+                android:layout_below="@+id/pVPrescAddLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:text = "Add Medicine"/>
+
+            <Button
+                android:id="@+id/pVsaveVisitButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pVaddPrescButton"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:text = "Save Visit Info"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

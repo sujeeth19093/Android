@@ -42,7 +42,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:text="Sujeeth Emmadi"
             android:textColor="@color/black" />
 
         <TextView
@@ -50,7 +49,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="24 years"
             android:layout_below="@id/patientNameTxtV"
             android:textColor="@color/black"/>
 
@@ -60,7 +58,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_below="@id/patientAgeTxtV"
-            android:text="Male"
             android:textColor="@color/black"/>
 
         <Button
@@ -74,11 +71,65 @@
             />
     </RelativeLayout>
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/mainPatientInfoLayout">
 
-    </ListView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <TableLayout
+                android:id="@+id/prescriptionTableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:visibility="gone">
+
+                <TableRow>
+                    <TextView
+                        android:layout_weight="1"
+                        android:text = "Prescription Table"
+                        android:textSize="25dp"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:background="@drawable/border_shape"/>
+                </TableRow>
+
+            </TableLayout>
+            <Button
+                android:id="@+id/logVisitButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/prescriptionTableLayout"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="10dp"
+                android:text = "Visit Log"/>
+
+            <Button
+                android:id="@+id/deactivatePrescButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/prescriptionTableLayout"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="10dp"
+                android:text = "Deactivate"/>
+
+            <Button
+                android:id="@+id/newVisitButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text = "New Visit"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/logVisitButton"
+                android:layout_marginTop="5dp"
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

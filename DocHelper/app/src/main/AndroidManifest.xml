@@ -21,7 +21,11 @@
         <activity android:name=".patientInfo" />
         <activity android:name=".newUserActivity" />
         <activity android:name=".fullPatientInfo" />
-        <activity android:name=".updatePatientInfo"></activity>
+        <activity android:name=".updatePatientInfo" />
+        <activity android:name=".visitLog" />
+        <activity android:name=".newPatientVisit" />
+        <activity android:name=".visitPrescription" />
+        <activity android:name=".visitLogInfo"></activity>
     </application>
 
 </manifest>
